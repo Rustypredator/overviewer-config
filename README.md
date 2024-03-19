@@ -1,4 +1,4 @@
-# Random-Host.tv Overviewer
+# Custom Mc Overviewer Config
 
 <!-- TOC -->
 * [1. Purpose](#1-purpose)

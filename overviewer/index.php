@@ -1,4 +1,12 @@
 <?php
+
+//Import config:
+if (file_exists('config.json')) {
+    $config = json_decode(file_get_contents('config.json'));
+} else {
+    $config = new StdClass();
+}
+
 setlocale(LC_TIME, 'de_DE.UTF-8');
 $indexFile = 'index.html';
 $indexUpdate = 0;
@@ -17,7 +25,7 @@ if(file_exists($jsFile)) {
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <title>Minecraft Map - Random-Host.tv</title>
+    <title>Minecraft Map | <?php echo $config->name ?? ''; ?></title>
     <link rel="stylesheet" type="text/css" href="leaflet.css">
     <link rel="stylesheet" type="text/css" href="overviewer.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -31,7 +39,7 @@ if(file_exists($jsFile)) {
 <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand mr-auto" href="/">
-            <img src="images/logo.png" class="d-inline-block align-top" width="32" height="32" alt="">&nbsp;Random-Host.tv
+            <img src="images/logo.png" class="d-inline-block align-top" width="32" height="32" alt="">&nbsp;<?php echo $config->name ?? ''; ?>
             <small class="ml-3"><i class="da da-map" aria-hidden="true"></i> Minecraft Map</small>
         </a>
         <div class="navbar-nav">
@@ -201,29 +209,29 @@ if(file_exists($jsFile)) {
             <div class="modal-body">
                 <p>
                     Diese Karte wurde mit Hilfe von
-                    <a href="https://overviewer.org/" class="text-nowrap" target="_blank"><i class="da da-external-link" aria-hidden="true"></i> Minecraft Overviewer</a>,
+                    <a href="https://overviewer.gregoryam.com/" class="text-nowrap" target="_blank"><i class="da da-external-link" aria-hidden="true"></i> Minecraft Overviewer</a>,
                     einer kostenlosen <strong>Open Source</strong> Software deren Quellcode frei auf
-                    <a href="https://github.com/overviewer/Minecraft-Overviewer/" class="text-nowrap" target="_blank"><i class="da da-github" aria-hidden="true"></i> GitHub</a>
+                    <a href="https://github.com/GregoryAM-SP/The-Minecraft-Overviewer" class="text-nowrap" target="_blank"><i class="da da-github" aria-hidden="true"></i> GitHub</a>
                     verfügbar ist, aus der Minecraft Welt des
-                    <a href="https://random-host.tv" class="text-nowrap" target="_blank"><i class="da da-external-link" aria-hidden="true"></i> Random-Host.tv</a>
+                    <a href="<?php echo $config->homepage ?? '#'; ?>" class="text-nowrap" target="_blank"><i class="da da-external-link" aria-hidden="true"></i> <?php echo $config->name ?? ''; ?></a>
                     Servers generiert.
                 </p>
                 <p>
                     Ganz im Sinne des <strong>Open Source</strong> Gedankens stellen wir die
                     Konfigurationsdateien und selbst geschriebenen Scripte welche wir zur Bereitstellung
                     der Karte einsetzen ebenfalls unter einer
-                    <a href="https://github.com/randomhost/overviewer-config/blob/master/LICENSE.txt" class="text-nowrap" target="_blank"><i class="da da-balance-scale" aria-hidden="true"></i> Open Source Lizenz</a>
+                    <a href="https://github.com/Rustypredator/overviewer-config/blob/master/LICENSE.txt" class="text-nowrap" target="_blank"><i class="da da-balance-scale" aria-hidden="true"></i> Open Source Lizenz</a>
                     auf
-                    <a href="https://github.com/randomhost/overviewer-config" class="text-nowrap" target="_blank"><i class="da da-github" aria-hidden="true"></i> GitHub</a>
+                    <a href="https://github.com/Rustypredator/overviewer-config" class="text-nowrap" target="_blank"><i class="da da-github" aria-hidden="true"></i> GitHub</a>
                     zur Verfügung.
                 </p>
-                <p class="alert alert-info">
+                <!--<p class="alert alert-info">
                     <strong>Hinweis:</strong><br>
                     Bitte beachte dass unsere Konfigurationsdateien nur zu Anschauungszwecken dienen
                     und nicht ohne Anpassungen auf anderen Minecraft Servern funktionieren werden.
-                </p>
+                </p>-->
                 <p>
-                    <a href="https://github.com/randomhost/overviewer-config" class="btn btn-primary" target="_blank">
+                    <a href="https://github.com/Rustypredator/overviewer-config" class="btn btn-primary" target="_blank">
                         <i class="da da-github" aria-hidden="true"></i> GitHub Projekt
                     </a>
                 </p>
